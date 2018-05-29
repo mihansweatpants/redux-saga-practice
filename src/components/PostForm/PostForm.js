@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { addPost } from './actions';
 
@@ -29,8 +30,8 @@ class PostForm extends Component {
         return (
             <div>
                 <h1>Add Post</h1>
-                <form onSubmit={this.onSubmit}>
-                    <div>
+                <Form onSubmit={this.onSubmit}>
+                    <Title>
                         <label htmlFor="">Title:</label>
                         <br />
                         <input
@@ -39,9 +40,8 @@ class PostForm extends Component {
                             value={this.props.title}
                             onChange={this.onChange}
                         />
-                    </div>
-                    <br />
-                    <div>
+                    </Title>
+                    <Body>
                         <label htmlFor="">Body:</label>
                         <br />
                         <textarea
@@ -50,13 +50,24 @@ class PostForm extends Component {
                             value={this.props.body}
                             onChange={this.onChange}
                         />
-                    </div>
-                    <br />
-                    <button type="submit">Submit</button>
-                </form>
+                    </Body>
+                    <Btn type="submit">Submit</Btn>
+                </Form>
             </div>
         );
     }
 }
+
+const Form = styled.form`
+    margin-bottom: 20px;
+`;
+
+const Title = styled.div`
+    margin-bottom: 20px;
+`;
+const Body = styled.div`
+    margin-bottom: 20px;
+`;
+const Btn = styled.button``;
 
 export default connect(null, { addPost })(PostForm);

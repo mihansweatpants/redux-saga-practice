@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from './actions';
 
+import PostCard from '../PostCard';
+
 class Posts extends Component {
     componentDidMount() {
         this.props.fetchPosts();
@@ -15,10 +17,7 @@ class Posts extends Component {
 
     render() {
         const postItems = this.props.posts.map(post => (
-            <div key={post.id} className="post">
-                <h3>{post.title}</h3>
-                <p>{post.body}</p>
-            </div>
+            <PostCard key={post.id} title={post.title} body={post.body} />
         ));
         return (
             <div>
