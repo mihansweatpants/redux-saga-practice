@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from './logo.svg';
 
+import logo from './logo.svg';
 import Posts from '../Posts';
 import PostForm from '../PostForm';
 
@@ -11,18 +11,23 @@ export default () => (
             <img src={logo} alt="" />
             <h1>Welcome to React</h1>
         </Header>
-        <PostForm />
-        <Divider />
-        <Posts />
+        <Main>
+            <PostForm />
+            <Divider />
+            <Posts />
+        </Main>
     </App>
 );
 
-const App = styled.div`
+const App = styled.div``;
+
+const Main = styled.div`
     width: 90%;
     margin: auto;
 `;
 
 const Header = styled.header`
+    text-align: center;
     background-color: #222;
     height: 150px;
     padding: 20px;
