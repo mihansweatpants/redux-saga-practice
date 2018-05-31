@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 import { addPost } from './actions';
+import selectors from './selectors';
 
 import Placeholder from '../Placeholder';
 
@@ -158,8 +159,8 @@ const Btn = styled.button`
 `;
 
 const mapStateToProps = state => ({
-    error: state.posts.submitError,
-    submitting: state.posts.submitting
+    error: selectors.getError(state),
+    submitting: selectors.getFormSubmitting(state)
 });
 
 export default connect(mapStateToProps, { addPost })(PostForm);

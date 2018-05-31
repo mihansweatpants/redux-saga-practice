@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { fetchPosts } from './actions';
+import selectors from './selectors';
 
 import PostCard from '../PostCard';
 import Placeholder from '../Placeholder';
@@ -45,15 +46,15 @@ class Posts extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    fetchPosts: () => dispatch(fetchPosts())
+const mapStateToProps = state => ({
+    posts: selectors.getPosts(state),
+    fetching: selectors.getPostFetching(state),
+    error: selectors.getError(state),
+    newPost: selectors.getNewPost(state)
 });
 
-const mapStateToProps = state => ({
-    posts: state.posts.posts,
-    fetching: state.posts.fetching,
-    error: state.posts.fetchError,
-    newPost: state.posts.newPost
+const mapDispatchToProps = dispatch => ({
+    fetchPosts: () => dispatch(fetchPosts())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

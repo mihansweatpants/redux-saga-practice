@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { fetchSuccess, fetchFailure } from './actions';
+import { fetchSuccess, fetchFailure, fetchPosts } from './actions';
 
 function* makeAsyncApiCall() {
     try {
@@ -18,5 +18,5 @@ function* makeAsyncApiCall() {
 
 export default function* watchFetchPosts() {
     console.log('redux-saga is running FETCH_POSTS action listener');
-    yield takeEvery('FETCH_POSTS', makeAsyncApiCall);
+    yield takeEvery([fetchPosts], makeAsyncApiCall);
 }

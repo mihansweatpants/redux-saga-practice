@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { addPostFailure, addPostSuccess } from './actions';
+import { addPost, addPostFailure, addPostSuccess } from './actions';
 
 function* makeAsyncApiCall(action) {
     try {
@@ -19,5 +19,5 @@ function* makeAsyncApiCall(action) {
 
 export default function* watchAddPosts() {
     console.log('redux-saga is running ADD_POST action listener');
-    yield takeLatest('ADD_POST', makeAsyncApiCall);
+    yield takeLatest([addPost], makeAsyncApiCall);
 }
